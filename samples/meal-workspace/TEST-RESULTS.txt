@@ -1,0 +1,36 @@
+Run date: 2026-09-15
+Runtime: ES2023+ JavaScript REPL; ESM wrappers removed, remaining source/test bodies executed together.
+Scope: newly adapted sample only, not original app, Node module loading, or CI.
+
+PASS workspace success
+PASS backup round trip
+PASS empty plans accepted
+PASS names deduplicated in encounter order
+PASS malformed JSON rejected
+PASS wrong backup version
+PASS extra backup field
+PASS missing backup days
+PASS wrong workspace version
+PASS non-object workspace
+PASS wrong lock type
+PASS missing filter
+PASS wrong filter type
+PASS invalid caller schema
+PASS wrong menu value type
+PASS extra menu key
+PASS missing menu key
+PASS menu name length boundary
+PASS names length and types
+PASS excluded list count boundary
+PASS menu list count boundary
+PASS invalid favorite and history
+PASS non-object days
+PASS invalid calendar dates
+PASS small year accepted
+PASS day shape and flags
+PASS note type and length boundary
+PASS day count boundary
+PASS parsed days clone menus
+PASS no-school flag preserves menu
+PASS workspace projects known lock and filter keys
+31/31 tests passed
