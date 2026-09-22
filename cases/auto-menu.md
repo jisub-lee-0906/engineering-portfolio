@@ -5,7 +5,7 @@
 - **목적:** 식단 아이디어를 정리하고 날짜별 주간표를 편집하는 브라우저 기반 도구.
 - **역할 구분:** 개발은 이지섭과 AI 도구의 협업, 메뉴 1차 검수는 협업자가 담당했습니다.
 - **기술:** Next.js, React, TypeScript, Playwright. 계정·서버 DB 없이 브라우저에 저장하는 구조입니다.
-- **검토 기준일:** 2026-09-16.
+- **검토 기준일:** 2026-09-23.
 
 ## 어떤 문제를 다루나
 로컬 저장값이나 사용자가 불러온 JSON이 잘못되면 편집 중인 상태에 영향을 줄 수 있습니다. 내보내는 CSV도 쉼표·따옴표와 스프레드시트 수식으로 해석되는 입력을 고려해야 합니다.
@@ -22,16 +22,18 @@
 - [검증 샘플과 실행 방법](../samples/meal-workspace/)
 - [실제 공개 검증 코드](../samples/meal-workspace/validation.mjs)
 - [31개 합성 테스트](../samples/meal-workspace/validation.test.mjs)
-- [기록된 테스트 결과와 실행 환경](../samples/meal-workspace/TEST-RESULTS.txt)
+- [기존 REPL 실행 기록](../samples/meal-workspace/TEST-RESULTS.txt)
+- [Node 24 LTS CLI 실행 기록](../samples/meal-workspace/NODE24-TEST-RESULTS.txt)
 
 샘플은 2026-09-15 원본의 일부 검증 로직을 분리·변형하고 합성 테스트를 추가한 것입니다. 메뉴 데이터셋, UI, CSV 전체 구현 또는 원본 앱 전체는 포함하지 않습니다.
 
 ## 확인한 결과를 구분해서 보기
 | 자료 | 확인한 사실 | 의미하지 않는 것 |
 | --- | --- | --- |
-| Vercel 배포 기록 | 2026-09-11, 커밋 29bde28에 배포 완료 상태 | 테스트 통과, 현재 서비스 정상 상태 |
-| Playwright 설정 | 로컬 환경 로직·desktop/mobile 프로젝트 구성 | 해당 테스트를 실제 통과했다는 결과 |
-| 공개 샘플 실행 기록 | ES2023+ REPL에서 합성 테스트 31개 통과 | Node ESM 로딩·GitHub CI·원본 앱 검증 |
+| Vercel 배포 상태 | 2026-09-22, 커밋 8b24cdf의 `success` / `Deployment has completed` 기록 | 현재 서비스 정상 상태, E2E 검증 |
+| 보안 패치 후 로컬 검증 | 2026-09-23: `npm test` 38개 테스트 통과, `npm run build` 통과, npm audit 0 vulnerabilities 기록 | 사용자 수, ROI, 현재 배포 품질 |
+| Playwright 설정 | 로직·desktop/mobile 프로젝트 구성. 위 38개 결과는 로직 테스트 범위 | desktop/mobile 전체 브라우저 E2E 통과 |
+| 공개 샘플 Node 24 실행 기록 | CLI 테스트 파일 1개 통과와 파일 내부 합성 assertion 31개 통과 | 원본 앱 전체, 배포 또는 외부 서비스 검증 |
 
 ## 면접에서 확인할 핵심
 - 파싱 성공과 유효한 애플리케이션 상태의 차이
@@ -40,6 +42,6 @@
 - 배포 완료와 기능 테스트 통과를 분리해 보는 이유
 
 ## 공개 범위
-원본과 데이터셋은 비공개로 유지합니다. 메뉴 검수는 영양 적합성·알레르기 안전성 인증을 의미하지 않으며, 실제 급식 적용 판단을 대체하지 않습니다.
+[원본 앱 저장소](https://github.com/jisub-lee-0906/auto-menu)는 공개되어 있습니다. 이 포트폴리오의 별도 샘플에는 메뉴 데이터셋이 포함되지 않습니다. 메뉴 검수는 영양 적합성·알레르기 안전성 인증을 의미하지 않으며, 실제 급식 적용 판단을 대체하지 않습니다.
 
 [전체 포트폴리오로 돌아가기](../README.md)

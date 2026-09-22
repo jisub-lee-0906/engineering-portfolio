@@ -1,28 +1,32 @@
 # Engineering Portfolio
 
-서비스 배포·복구, 데이터 검증, Python 자동화 프로젝트의 기술 문서와 공개 코드 모음입니다. 각 사례에서 해결하려는 문제, 구현 구조, 검증 범위를 확인할 수 있습니다.
+서비스 배포·복구, 데이터 검증, 자동화 프로젝트의 기술 문서와 공개 코드 모음입니다. 각 사례에서 해결하려는 문제, 구현 구조, 검증 범위를 확인할 수 있습니다. 아래 결과와 설명은 이지섭과 AI 도구의 협업 개발 범위이며, 개인 단독 개발 또는 운영 성과를 주장하지 않습니다.
 
 ## 공개 코드부터 보기
 
+- [auto-menu](https://github.com/jisub-lee-0906/auto-menu): 브라우저 저장 데이터·JSON 백업·CSV 처리. 2026-09-23에 38개 로직 테스트와 production build 통과 기록을 확인했습니다.
+- [vn-automation-toolkit](https://github.com/jisub-lee-0906/vn-automation-toolkit): 파일 반영 전 검사·원자적 교체·상태 기록. 2026-09-23 Python 전체 테스트 132개 통과 기록을 확인했습니다.
+- [EvidenceDesk](https://github.com/jisub-lee-0906/evidencedesk): 가상 규정 문서를 검색해 답변 근거를 제시하는 로컬 데모. API 키 없는 오프라인 모드와 선택적 AI 연동을 분리했으며, 2026-09-23에 자동 테스트 11개 통과 기록을 확인했습니다. 실제 OpenAI 호출·Docker 실행은 미검증입니다.
 - [meal-workspace 샘플·실행법](samples/meal-workspace): 브라우저 저장 데이터와 JSON 백업 검증 로직을 분리·변형한 샘플
-- [검증 코드](samples/meal-workspace/validation.mjs) · [합성 테스트](samples/meal-workspace/validation.test.mjs) · [실행 기록](samples/meal-workspace/TEST-RESULTS.txt)
-- 기록된 31개 테스트 결과는 ES2023+ REPL 기준입니다. Node 모듈 로딩·CI·원본 앱 전체의 통과 기록은 아닙니다.
+- [검증 코드](samples/meal-workspace/validation.mjs) · [합성 테스트](samples/meal-workspace/validation.test.mjs) · [기존 REPL 기록](samples/meal-workspace/TEST-RESULTS.txt) · [Node 24 LTS 기록](samples/meal-workspace/NODE24-TEST-RESULTS.txt)
 
 ## 실행·구조
 
-공개 실행 대상은 `samples/meal-workspace`뿐입니다. 의존성이 없으므로 설치는 필요하지 않으며, 저장소 루트에서 Node.js 22 이상으로 실행합니다.
+공개 실행 대상은 `samples/meal-workspace`뿐입니다. 의존성이 없으므로 설치는 필요하지 않으며, 저장소 루트에서 Node.js 22 이상으로 실행합니다. 2026-09-23에는 Node.js 24.21.0 LTS에서 실제 실행했습니다.
 
 ```powershell
 cd engineering-portfolio
 npm test
 ```
 
-`package.json`은 이 공개 샘플의 Node ESM 테스트 명령만 정의합니다. `.github/workflows/test.yml`은 push와 pull request에서 같은 명령을 Node 22로 실행합니다. 이 CI는 공개 샘플만 검증하며 비공개 원본, 배포, 외부 서비스는 실행하지 않습니다.
+`package.json`은 이 공개 샘플의 Node ESM 테스트 명령만 정의합니다. `.github/workflows/test.yml`은 push와 pull request에서 같은 명령을 Node 22로 실행하도록 구성되어 있습니다. 이 CI는 공개 샘플만 검증하며 비공개 원본, 배포, 외부 서비스는 실행하지 않습니다.
+
+Node CLI 결과의 `tests 1 / pass 1`은 테스트 파일 1개의 통과를 뜻합니다. 해당 파일이 출력한 `31/31 tests passed`는 파일 내부의 합성 assertion 31개 통과를 뜻하며, 서로 다른 집계입니다.
 
 ```text
 samples/meal-workspace/validation.mjs       검증·정규화 로직
 samples/meal-workspace/validation.test.mjs  합성 입력 회귀 테스트
-cases/                                      비공개 원본의 범위·근거 문서
+cases/                                      프로젝트별 구조·검증 범위 문서
 ```
 ## 대표 프로젝트
 
@@ -34,12 +38,12 @@ cases/                                      비공개 원본의 범위·근거 �
 [구조·검증 사례 읽기](cases/our-ledger.md)
 
 ### 2. 자동화 툴킷 | 파일 반영 전 검사·상태 관리
-후보 산출물의 경로·중복 ID·승인 및 QA 기록을 검사하고, 임시 복사 후 원자적 파일 교체·백업·상태 기록을 처리하는 Python 도구입니다. 구현과 회귀 테스트 정의를 확인했으며 전체 테스트 통과 기록은 미확인입니다.
+후보 산출물의 경로·중복 ID·승인 및 QA 기록을 검사하고, 임시 복사 후 원자적 파일 교체·백업·상태 기록을 처리하는 Python 도구입니다. 2026-09-23에 기록된 Python 전체 테스트 결과는 132개 통과입니다. 실제 사람의 승인과 산출물 품질은 플래그 검사와 구분합니다.
 
 [오류 처리·구현 사례 읽기](cases/automation-toolkit.md)
 
 ### 3. 오늘의 급식 | 저장 데이터 검증·백업
-식단 아이디어와 주간표를 편집하는 브라우저 도구입니다. 저장 데이터·JSON 백업의 형식 검증과 CSV 처리 로직을 다뤘습니다. 2026-09-11 배포 완료 기록이 있으며, 원본 일부를 분리·변형한 **공개 검증 코드와 합성 테스트**를 제공합니다. 메뉴 1차 검수는 협업자가 담당했습니다.
+식단 아이디어와 주간표를 편집하는 브라우저 도구입니다. 저장 데이터·JSON 백업의 형식 검증과 CSV 처리 로직을 다뤘습니다. 2026-09-23 근거에서는 보안 패치 후 38개 로직 테스트와 production build 통과 기록을 확인했습니다. 이는 특정 시점의 소스 검증이며 현재 서비스 상태나 사용자 성과를 의미하지 않습니다. 메뉴 1차 검수는 협업자가 담당했습니다.
 
 [프로젝트 사례](cases/auto-menu.md) · [공개 샘플·실행법](samples/meal-workspace)
 
@@ -50,7 +54,7 @@ cases/                                      비공개 원본의 범위·근거 �
 
 ## 검증·공개 범위
 
-공개 샘플의 **31개 합성 테스트는 ES2023+ REPL 실행 기록**입니다. Node 모듈 로딩·CI·원본 앱 전체를 검증한 결과가 아닙니다. 비공개 원본과 로그를 외부에서 직접 열 수 없는 사례는 문서 요약으로 제공합니다.
+공개 샘플은 2026-09-15 REPL 기록을 보존하며, 2026-09-23 Node 24.21.0 LTS CLI에서 ESM 로딩을 포함해 실제 실행했습니다. CLI 테스트 파일 1개 통과와 파일 내부 합성 assertion 31개 통과를 구분합니다. 어느 기록도 원본 앱 전체·배포·외부 서비스를 검증한 결과는 아닙니다. 비공개 원본과 로그를 외부에서 직접 열 수 없는 사례는 문서 요약으로 제공합니다.
 
 <details>
 <summary>검증 기준과 공개 제한 자세히 보기</summary>
@@ -64,4 +68,4 @@ cases/                                      비공개 원본의 범위·근거 �
 
 </details>
 
-검토 기준일: 2026-09-16
+검토 기준일: 2026-09-23

@@ -1,0 +1,47 @@
+Run date: 2026-09-23
+Runtime: Node.js v24.21.0 LTS
+Command: node --test --test-reporter=spec samples/meal-workspace/validation.test.mjs
+Scope: dependency-free adapted public sample only. ESM module loading was exercised. No browser, API, database, GPU, model, deployment, or original private application was run.
+
+PASS workspace success
+PASS backup round trip
+PASS empty plans accepted
+PASS names deduplicated in encounter order
+PASS malformed JSON rejected
+PASS wrong backup version
+PASS extra backup field
+PASS missing backup days
+PASS wrong workspace version
+PASS non-object workspace
+PASS wrong lock type
+PASS missing filter
+PASS wrong filter type
+PASS invalid caller schema
+PASS wrong menu value type
+PASS extra menu key
+PASS missing menu key
+PASS menu name length boundary
+PASS names length and types
+PASS excluded list count boundary
+PASS menu list count boundary
+PASS invalid favorite and history
+PASS non-object days
+PASS invalid calendar dates
+PASS small year accepted
+PASS day shape and flags
+PASS note type and length boundary
+PASS day count boundary
+PASS parsed days clone menus
+PASS no-school flag preserves menu
+PASS workspace projects known lock and filter keys
+31/31 tests passed
+✔ samples\meal-workspace\validation.test.mjs
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+
+Interpretation: `pass 1` is the Node CLI test-file count. `31/31 tests passed` is the test file's internal synthetic assertion count.
