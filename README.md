@@ -8,6 +8,22 @@
 - [검증 코드](samples/meal-workspace/validation.mjs) · [합성 테스트](samples/meal-workspace/validation.test.mjs) · [실행 기록](samples/meal-workspace/TEST-RESULTS.txt)
 - 기록된 31개 테스트 결과는 ES2023+ REPL 기준입니다. Node 모듈 로딩·CI·원본 앱 전체의 통과 기록은 아닙니다.
 
+## 실행·구조
+
+공개 실행 대상은 `samples/meal-workspace`뿐입니다. 의존성이 없으므로 설치는 필요하지 않으며, 저장소 루트에서 Node.js 22 이상으로 실행합니다.
+
+```powershell
+cd engineering-portfolio
+npm test
+```
+
+`package.json`은 이 공개 샘플의 Node ESM 테스트 명령만 정의합니다. `.github/workflows/test.yml`은 push와 pull request에서 같은 명령을 Node 22로 실행합니다. 이 CI는 공개 샘플만 검증하며 비공개 원본, 배포, 외부 서비스는 실행하지 않습니다.
+
+```text
+samples/meal-workspace/validation.mjs       검증·정규화 로직
+samples/meal-workspace/validation.test.mjs  합성 입력 회귀 테스트
+cases/                                      비공개 원본의 범위·근거 문서
+```
 ## 대표 프로젝트
 
 아래 프로젝트는 이지섭과 AI 도구의 협업 개발입니다.

@@ -1,0 +1,7 @@
+{
+  "name": "engineering-portfolio",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test samples/meal-workspace/validation.test.mjs" }
+}
