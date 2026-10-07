@@ -1,0 +1,17 @@
+RECORD_CREATED_UTC 2026-10-07T09:55:28.383Z
+EXECUTOR AI agent; Windows / Node.js v26.5.0
+NOTE local launcher path normalized to node; outputs retained
+COMMAND node labs/loopback-network/run.cjs
+PASS healthy: HTTP 200 on 127.0.0.1:<ephemeral>/health
+PASS stopped: connection refused (ECONNREFUSED)
+PASS restarted: HTTP 200 recovery on same loopback port
+RESULT 3/3 scenarios passed
+EXIT_CODE 0
+COMMAND node labs/asset-account-validation/run.cjs
+PASS duplicate-asset: DUPLICATE_ASSET_ID:A-100
+PASS retired-active-account: RETIRED_ACTIVE_ACCOUNT:E-009
+PASS valid: VALID
+RESULT 3/3 deterministic cases passed
+EXIT_CODE 0
+SOURCE_SHA256 labs/loopback-network/run.cjs d80c331f73c8173bd2dea2f101143cbe792bf888fc43f08169b432f3f252e939
+SOURCE_SHA256 labs/asset-account-validation/run.cjs 1d607c0fc94cbde4a54f7183dc32dead8dc422f982b1434e1f61a35ac9040b38
