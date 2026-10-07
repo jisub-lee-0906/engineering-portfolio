@@ -1,0 +1,48 @@
+TAP version 13
+# PASS workspace success
+# PASS backup round trip
+# PASS empty plans accepted
+# PASS names deduplicated in encounter order
+# PASS malformed JSON rejected
+# PASS wrong backup version
+# PASS extra backup field
+# PASS missing backup days
+# PASS wrong workspace version
+# PASS non-object workspace
+# PASS wrong lock type
+# PASS missing filter
+# PASS wrong filter type
+# PASS invalid caller schema
+# PASS wrong menu value type
+# PASS extra menu key
+# PASS missing menu key
+# PASS menu name length boundary
+# PASS names length and types
+# PASS excluded list count boundary
+# PASS menu list count boundary
+# PASS invalid favorite and history
+# PASS non-object days
+# PASS invalid calendar dates
+# PASS small year accepted
+# PASS day shape and flags
+# PASS note type and length boundary
+# PASS day count boundary
+# PASS parsed days clone menus
+# PASS no-school flag preserves menu
+# PASS workspace projects known lock and filter keys
+# 31/31 tests passed
+# Subtest: samples\\meal-workspace\\validation.test.mjs
+ok 1 - samples\\meal-workspace\\validation.test.mjs
+  ---
+  duration_ms: 59.5388
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64.491
